@@ -41,13 +41,7 @@ if st.button("Predict"):
         input_features = loaded_scaler.transform(input_features) 
         
         value=loaded_model.predict(input_features)
-        if value == 0:
-                st.success("✅ low prices")
-        elif value == 1:
-                st.success("⚠️ Medium Prices")
-        elif value==2:
-                st.error("⛔ Slightly High Prices")
-        elif value==3:
-                st.error("⛔ High Price")
+        if value >= 0:
+                st.success(f"House price is {value}")
     except Exception as e:
          st.error(f"Error: {e}")
